@@ -32,10 +32,12 @@ input {
     background-color: var(--light-cyan);
     border: none;
     outline-color: var(--strong-cyan);
+    text-align: right; 
 }
 
+
 header {
-    margin: 0;
+    margin: 1rem 0;
     text-transform: uppercase;
     letter-spacing: 10px;
 }
@@ -44,24 +46,127 @@ main {
     background-color: var(--white);
     padding: 1em;
     width: 70%;
-}
-
-.fieldset {
+    border-radius: 10px;
+    margin: .5rem 0;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
 }
 
+.left-col,
+.right-col {
+    flex-basis: 100%;
+}
+
+.fieldset, .tip-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+    position: relative;
+}
+
+svg {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
 
 label {
-    margin-bottom: .5em;
+    margin-bottom: 1em;
+    font-size: .8rem;
+    color: var(--dark-gray-cyan);
+}
+
+.tip-category {
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 10px;
+    
+}
+
+.tip-category div {
+    background-color: var(--dark-cyan);
+    color: var(--white);
+    text-align: center;
+    padding: .2em .5em;
+    border-radius: 5px;
+}
+
+.tip-category div:hover,
+.tip-category div:focus {
+    background-color: var(--strong-cyan);
+    cursor: pointer;
+    color: var(--dark-cyan);
+}
+
+.tip-category input {
+    font-size: 1rem; 
+    display: inline-block;
+}
+
+.right-col {
+    background-color: var(--dark-cyan);
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-col p {
+    color: var(--white);
+    margin-top: 0;
     font-size: .8rem;
 }
 
 
+.tip-row,
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
 
+.tip-row span,
+.total-row span {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--strong-cyan);
+} 
 
+.tip-label span {
+    color: var( --dark-grayish-cyan);
+    font-size: .8rem;
+}
 
+.right-col button {
+    width: 100%;
+    padding: .5em;
+    background-color: var(--strong-cyan);
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: var(--dark-cyan);
+    font-weight: 700;
+}
+
+@media only screen and (min-width: 650px) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+        max-width: 40em;
+        justify-content: space-between;
+    }
+
+    .tip-category {
+        grid-template-columns: repeat(3, auto);
+    }
+
+    .right-col button {
+        margin-top: auto;
+    }
+
+}
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
