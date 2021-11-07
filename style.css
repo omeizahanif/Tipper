@@ -1,0 +1,67 @@
+:root {
+    --strong-cyan: hsl(172, 67%, 45%);
+    --dark-cyan: hsl(183, 100%, 15%);
+    --dark-gray-cyan: hsl(186, 14%, 43%);
+    --dark-grayish-cyan: hsl(184, 14%, 56%);
+    --light-gray-cyan: hsl(185, 41%, 84%);
+    --light-cyan: hsl(189, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace;
+    background-color: var(--light-gray-cyan);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+input {
+    font-size: calc(24 / 16 * 1rem);
+    background-color: var(--light-cyan);
+    border: none;
+    outline-color: var(--strong-cyan);
+}
+
+header {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+
+main {
+    background-color: var(--white);
+    padding: 1em;
+    width: 70%;
+}
+
+.fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+
+label {
+    margin-bottom: .5em;
+    font-size: .8rem;
+}
+
+
+
+
+
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
