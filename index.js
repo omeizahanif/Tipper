@@ -4,68 +4,54 @@ const ten = document.getElementById("ten");
 const fifteen = document.getElementById("fifteen");
 const twentyFive = document.getElementById("twenty_five");
 const fifty = document.getElementById("fifty");
-const customInput = document.getElementById("custom").value;
-const numPeople = document.getElementById("people").value;
+const customInput = document.getElementById("custom");
+const numPeople = document.getElementById("people");
 const tipPerPerson = document.getElementById("tip_person");
 const totalPerPerson = document.getElementById("total_person");
 const resetBtn = document.getElementById("reset");
-let tipAmount = 0;
-const tipAmountPerPerson = tipAmount / numPeople;
-const totalAmoutPerPerson = (billInput + tipAmount) / numPeople;
 
 
-function calcTipAmount(bill, tip) {
-    return bill * tip
-}
-
-function selectTip(percent) {
-    switch(percent) {
-        case 5:
-            return 5 / 100;
-            break;
-        case 10:
-            return 10 / 100;
-            break;
-        case 15:
-            return 15 / 100;
-            break;
-        case 25:
-            return 25 / 100;
-            break;
-        case 50:
-            return 50 / 100;
-            break;
-        default:
-            return percent / 100;
-
+function tipCalculator(tipPercent) {
+    let bill = parseFloat(billInput.value);
+    let numberOfPeople = parseInt(numPeople.value);
+    let tipAmount = bill * (tipPercent / 100);
+    if (numberOfPeople) {
+        let tipForEachPerson = (tipAmount / numberOfPeople);
+        tipPerPerson.textContent = `$${tipForEachPerson.toFixed(2)}`;
+        totalPerPerson.textContent = `$${(bill + tipForEachPerson).toFixed(2)}`;
+    } else {
+        return false;
     }
+    
+    
+    return true;
 }
+
 
 five.addEventListener("click", function(e) {
-    tipAmount = calcTipAmount(parseFloat(billInput.value), selectTip(5));
-    console.log(tipAmount);
+    tipCalculator(5);
 })
 
 ten.addEventListener("click", function(e) {
-    tipAmount = (calcTipAmount(parseFloat(billInput.value), selectTip(10))).toFixed(2);
-    console.log(tipAmount)
+    tipCalculator(10);
 })
 
 fifteen.addEventListener("click", function(e) {
-    tipAmount = calcTipAmount(parseFloat(billInput.value), selectTip(15));
-    console.log(tipAmount)
+    tipCalculator(15);
 })
 
 twentyFive.addEventListener("click", function(e) {
-    tipAmount = calcTipAmount(parseFloat(billInput.value), selectTip(25));
-    console.log(tipAmount)
+    tipCalculator(25);
 })
 
 fifty.addEventListener("click", function(e) {
-    tipAmount = calcTipAmount(parseFloat(billInput.value), selectTip(50));
-    console.log(tipAmount)
+    tipCalculator(50);
 })
 
+customInput.addEventListener("input", function(e) {
+    let customValue = parseFloat(customInput.value);
+    tipCalculator(customValue);
+})
 
 
 

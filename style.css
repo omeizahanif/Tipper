@@ -93,7 +93,8 @@ label {
 }
 
 .tip-category div:hover,
-.tip-category div:focus {
+.tip-category div:focus,
+.active {
     background-color: var(--strong-cyan);
     cursor: pointer;
     color: var(--dark-cyan);
