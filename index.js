@@ -10,7 +10,7 @@ const tipPerPerson = document.getElementById("tip_person");
 const totalPerPerson = document.getElementById("total_person");
 const resetBtn = document.getElementById("reset");
 const tipCategory = document.getElementsByClassName("tip-category")[0];
-
+const tipSelectors = [...tipCategory.children];
 /**
  * a function to calculate the tip amount,
  * the tip amount per person and the total
@@ -25,15 +25,13 @@ function tipCalculator(tipPercent) {
         let tipForEachPerson = (tipAmount / numberOfPeople);
         tipPerPerson.textContent = `$${tipForEachPerson.toFixed(2)}`;
         totalPerPerson.textContent = `$${((bill/numberOfPeople) + tipForEachPerson).toFixed(2)}`;
-    } else {
-        alert("Number of people can't be zero")
     }
     
     return true;
 }
 
 function setActiveState(id) {
-    const tipSelectors = [...tipCategory.children];
+    if (id !== customInput) customInput.value = "";
     for (let tipSelector of tipSelectors) {
         tipSelector.classList.remove("active");
     }
@@ -42,43 +40,53 @@ function setActiveState(id) {
 
 five.addEventListener("click", function(e) {
     setActiveState(five);
-    //tipCalculator(5);
+    return tipCalculator(5);
 })
 
 ten.addEventListener("click", function(e) {
     setActiveState(ten);
-    //tipCalculator(10);
+    return tipCalculator(10);
 })
 
 fifteen.addEventListener("click", function(e) {
     setActiveState(fifteen);
-    //tipCalculator(15);
+    return tipCalculator(15);
 })
 
 twentyFive.addEventListener("click", function(e) {
     setActiveState(twentyFive);
-    //tipCalculator(25);
+    return tipCalculator(25);
 })
 
 fifty.addEventListener("click", function(e) {
     setActiveState(fifty);
-    //tipCalculator(50);
+    return tipCalculator(50);
 })
 
 customInput.addEventListener("input", function(e) {
-    let customValue = parseFloat(customInput.value);
+    let customValue = parseFloat(customInput.value) || 0;
     setActiveState(customInput);
-    //tipCalculator(customValue);
+    return tipCalculator(customValue);
 })
 
-/*numPeople.addEventListener("input", function(e) {
+numPeople.addEventListener("input", function(e) {
+    let customValue = parseFloat(customInput.value) || 0;
+    if (customValue > 0 ) return tipCalculator(customValue);
 
-})*/
+    for (let tipSelector of tipSelectors) {    
+        if (tipSelector.classList.contains("active")) {
+            let tipValue = parseInt(tipSelector.dataset.number);
+            return tipCalculator(tipValue);
+        }
+    }
+})
 
 resetBtn.addEventListener("click", function(e) {
     billInput.value = "";
     customInput.value = "";
     numPeople.value = "";
+    tipPerPerson.textContent = `$0.00`;
+    totalPerPerson.textContent = `$0.00`;
 })
 
 
