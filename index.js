@@ -9,7 +9,8 @@ const numPeople = document.getElementById("people");
 const tipPerPerson = document.getElementById("tip_person");
 const totalPerPerson = document.getElementById("total_person");
 const resetBtn = document.getElementById("reset");
-
+const tipCategory = document.getElementsByClassName("tip-category")[0];
+console.log(tipCategory.children);
 
 function tipCalculator(tipPercent) {
     let bill = parseFloat(billInput.value);
@@ -18,7 +19,7 @@ function tipCalculator(tipPercent) {
     if (numberOfPeople) {
         let tipForEachPerson = (tipAmount / numberOfPeople);
         tipPerPerson.textContent = `$${tipForEachPerson.toFixed(2)}`;
-        totalPerPerson.textContent = `$${(bill + tipForEachPerson).toFixed(2)}`;
+        totalPerPerson.textContent = `$${((bill/numberOfPeople) + tipForEachPerson).toFixed(2)}`;
     } else {
         return false;
     }
@@ -29,6 +30,11 @@ function tipCalculator(tipPercent) {
 
 
 five.addEventListener("click", function(e) {
+    tipCategory.children.forEach(function(child) {
+        child.classList.remove("active");
+        five.classList.add("active");
+    })
+    
     tipCalculator(5);
 })
 
