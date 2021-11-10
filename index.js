@@ -10,7 +10,8 @@ const tipPerPerson = document.getElementById("tip_person");
 const totalPerPerson = document.getElementById("total_person");
 const resetBtn = document.getElementById("reset");
 const tipCategory = document.getElementsByClassName("tip-category")[0];
-const tipSelectors = [...tipCategory.children];
+const tipSelectors = [...tipCategory.children]; //get list of tip divs & custom input
+
 /**
  * a function to calculate the tip amount,
  * the tip amount per person and the total
@@ -30,13 +31,22 @@ function tipCalculator(tipPercent) {
     return true;
 }
 
+/**
+ * a function that sets the active state of 
+ * any selected tip div element or custom
+ * input
+ * @param {HTMLElement} id 
+ */
+
 function setActiveState(id) {
     if (id !== customInput) customInput.value = "";
     for (let tipSelector of tipSelectors) {
         tipSelector.classList.remove("active");
     }
     id.classList.add("active");
+    return true;
 }
+
 
 five.addEventListener("click", function(e) {
     setActiveState(five);
@@ -88,7 +98,3 @@ resetBtn.addEventListener("click", function(e) {
     tipPerPerson.textContent = `$0.00`;
     totalPerPerson.textContent = `$0.00`;
 })
-
-
-
-
