@@ -92,9 +92,10 @@ label {
     border-radius: 5px;
 }
 
+
+.tip-category .active,
 .tip-category div:hover,
-.tip-category div:focus,
-.active {
+.tip-category div:focus {
     background-color: var(--strong-cyan);
     cursor: pointer;
     color: var(--dark-cyan);
